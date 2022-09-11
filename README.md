@@ -46,12 +46,17 @@ tar -xf binutils-2.31.tar.xz
 cp binutils-2.31/binutils/readelf.c ./
 ```
 
-Add anti-fuzzing protection and compile.
+Add anti-fuzzing protection.
 ```
 python3 codeins.py readelf.c 100 10 100
-gcc ./output.c -o nofuzz_readelf
 ```
 
+Replace the source file with the protected version.
+```
+mv ./output.c binutils-2.31/binutils/readelf.c
+```
+
+Compile binutils and get the protected readelf.
 
 
 
